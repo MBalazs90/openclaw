@@ -37,7 +37,7 @@ export async function createOperatorApprovalsGatewayClient(
     clientName: GATEWAY_CLIENT_NAMES.GATEWAY_CLIENT,
     clientDisplayName: params.clientDisplayName,
     mode: GATEWAY_CLIENT_MODES.BACKEND,
-    scopes: ["operator.approvals"],
+    scopes: ["operator.approvals", "operator.write", "operator.read"],
     onEvent: params.onEvent,
     onHelloOk: params.onHelloOk,
     onConnectError: params.onConnectError,

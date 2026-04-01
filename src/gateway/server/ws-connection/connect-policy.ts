@@ -39,8 +39,24 @@ export function shouldSkipControlUiPairing(
   role: GatewayRole,
   trustedProxyAuthOk = false,
   authMode?: string,
+  options?: { isLocalClient?: boolean; authOk?: boolean; authMethod?: string },
 ): boolean {
   if (trustedProxyAuthOk) {
+    return true;
+  }
+  // Loopback connections authenticated with a valid token or password skip
+  // device pairing.  This covers (a) the internal gateway-client used for
+  // exec-approval follow-up dispatch and (b) reverse-proxy setups (e.g.
+  // Tailscale Serve → nginx) where the proxy injects a shared secret on
+  // behalf of an already-authenticated user.  Network-level security is
+  // guaranteed because the gateway port is bound to 127.0.0.1 — only local
+  // processes or a trusted reverse proxy can reach it.
+  if (
+    options?.isLocalClient &&
+    options?.authOk &&
+    role === "operator" &&
+    (options?.authMethod === "token" || options?.authMethod === "password")
+  ) {
     return true;
   }
   // When auth is completely disabled (mode=none), there is no shared secret

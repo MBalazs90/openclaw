@@ -708,6 +708,7 @@ export function attachGatewayWsMessageHandler(params: {
           role,
           trustedProxyAuthOk,
           resolvedAuth.mode,
+          { isLocalClient, authOk, authMethod },
         );
         if (device && devicePublicKey && !skipPairing) {
           const formatAuditList = (items: string[] | undefined): string => {
