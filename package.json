@@ -1,6 +1,6 @@
 {
   "name": "openclaw",
-  "version": "2026.4.1",
+  "version": "2026.4.2",
   "description": "Multi-channel AI gateway with extensible messaging integrations",
   "keywords": [],
   "homepage": "https://github.com/openclaw/openclaw#readme",
@@ -698,6 +698,10 @@
     "./plugin-sdk/models-provider-runtime": {
       "types": "./dist/plugin-sdk/models-provider-runtime.d.ts",
       "default": "./dist/plugin-sdk/models-provider-runtime.js"
+    },
+    "./plugin-sdk/skill-commands-runtime": {
+      "types": "./dist/plugin-sdk/skill-commands-runtime.d.ts",
+      "default": "./dist/plugin-sdk/skill-commands-runtime.js"
     },
     "./plugin-sdk/native-command-registry": {
       "types": "./dist/plugin-sdk/native-command-registry.d.ts",
